@@ -1,15 +1,23 @@
 package practicaPB2;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Turnador {
-	private LinkedList<Integer> turnosEspera = new LinkedList<Integer>();
-	private LinkedList<Integer> turnosAtendido = new LinkedList<Integer>();
+	private LinkedList<Integer> turnosEspera;
+	private LinkedList<Integer> turnosAtendido;
 	private Integer cantMaxTurno;
 	private Integer contadorTurno = 0;
 	
-	public Turnador() {
-		cantMaxTurno = 5;
+	public Turnador(Integer cantMaxTurno) throws Exception {
+		if (cantMaxTurno > 0) {
+			turnosEspera = new LinkedList<Integer>();
+			turnosAtendido = new LinkedList<Integer>();
+			this.cantMaxTurno = cantMaxTurno;
+		}
+		else {
+			throw new Exception("Se creo un Turnador con ningun turno para entregar");
+		}
 	}
 	
 	public Integer obtenerTurnoActual() {
